@@ -5,13 +5,13 @@
     </div>
     <div class="container borde__form__login mt-5">
         <h2 class="text-center my-4">Login Usuarios</h2>
-        <b-form @submit="onSubmit">
+        <b-form @submit.prevent="enviarDatos">
             <b-form-group id="input-group-1" label="Email" label-for="input-1">
                 <b-form-input id="input-1" v-model="email" type="email" required></b-form-input>
             </b-form-group>
 
             <b-form-group id="input-group-2" label="Contraseña" label-for="input-2">
-                <b-form-input id="input-2" v-model="clave" required></b-form-input>
+                <b-form-input id="input-2" v-model="clave" type="password" required></b-form-input>
             </b-form-group>
             
             <p class="text-center">Ingrese sus credenciales de usuario</p>
@@ -31,6 +31,21 @@ export default {
             clave: ''
         }
     },
+    methods: {
+        enviarDatos(){
+            let expresionCorreo = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/gmi;
+
+            if (this.email && this.clave && expresionCorreo.test(this.email)){
+                let datosLogin = {
+                    username: this.email,
+                    password: this.clave
+                };
+                this.$store.dispatch('datosUsuarioLogin',datosLogin);
+            }else{
+                alert("Datos erroneos");
+            }
+        }
+    }
 }
 </script>
 
