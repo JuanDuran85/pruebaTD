@@ -15,17 +15,23 @@
     <section>
       <Indicadores/>
     </section>
+    <section>
+      <TablasHome/>
+    </section>
   </main>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
 import Indicadores from '@/components/Indicadores.vue';
+import TablasHome from '@/components/TablasHome.vue';
+
 export default {
   name: 'Home',
   components: { 
     NavBar,
-    Indicadores 
+    Indicadores,
+    TablasHome
   },
   data() {
     return {
@@ -36,6 +42,10 @@ export default {
           },
         ]
     }
+  },
+  created() {
+    this.$store.dispatch('infoDashboard');
+    this.$store.dispatch('infoMonitor');
   },
 }
 </script>

@@ -4,7 +4,7 @@
           <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 indicador_i">
               <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                    <div>
+                    <div v-if="$store.state.datosListos">
                         <radial-progress-bar :diameter="150"
                         :completed-steps="cumplimientoDO.porcentaje"
                         :total-steps="100">
@@ -15,7 +15,7 @@
                         <a href="">Ver Detalles</a>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" v-if="$store.state.datosListos">
                     <p class="font-weight-bold text-center mt-3"> {{cumplimientoDO.nombre}}</p>
                     <div>
                         <div class="d-inline-block w-50">
@@ -33,7 +33,7 @@
           <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 indicador_d">
                            <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                    <div>
+                    <div v-if="$store.state.datosListos">
                         <radial-progress-bar :diameter="150"
                         :completed-steps="ordenesAJ.porcentaje"
                         :total-steps="100">
@@ -44,7 +44,7 @@
                         <a href="">Ver Detalles</a>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" v-if="$store.state.datosListos">
                     <p class="font-weight-bold text-center mt-3"> {{ordenesAJ.nombre}}</p>
                     <div>
                         <div class="d-inline-block w-50">

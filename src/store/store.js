@@ -11,10 +11,17 @@ export default new Vuex.Store({
     dashboardKpis: [],
     dashboardUOrd: [],
     dashboardUDev: [],
+    datosListos: false,
   },
   getters: {
     enviandoKpis(state){
-      return state.dashboardKpis
+      return state.dashboardKpis;
+    },
+    enviandoUO(state){
+      return state.dashboardUOrd;
+    },
+    enviandoUD(state){
+      return state.dashboardUDev;
     }
   },
   mutations: {
@@ -28,6 +35,7 @@ export default new Vuex.Store({
       state.dashboardKpis = dasRecibida.kpis;
       state.dashboardUOrd = dasRecibida.utimas_ordenes;
       state.dashboardUDev = dasRecibida['ultimas_devoluciones:'];
+      state.datosListos = true;
     }
   },
   actions: {
