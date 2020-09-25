@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import router from '../router/router';
-import { postAPI, getAPI } from "../config/configAPI";
+import { postAPI, getAPI, getApiLocal } from "../config/configAPI";
 
 Vue.use(Vuex)
 
@@ -13,7 +13,9 @@ export default new Vuex.Store({
     dashboardUDev: [],
   },
   getters: {
-
+    enviandoKpis(state){
+      return state.dashboardKpis
+    }
   },
   mutations: {
     mutationLogin(state,resLogin){
@@ -45,6 +47,12 @@ export default new Vuex.Store({
       getAPI('secure/ordenes?oficina=&estado&fecha-ini=&fecha-fin=&page=1&size=10').then(res=>{
         console.log(res);
       }).catch(error => console.log(error))
+    },
+    llamdoLocalAPI(){
+      getApiLocal('api/dashboard.json').then(resp =>{
+        console.log("Respuesta de api local - estados");
+        console.log(resp);
+      }).catch(error=>console.log(error));
     }
   },
 })

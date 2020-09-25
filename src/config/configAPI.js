@@ -19,3 +19,12 @@ export const getAPI = async function(recibirURL){
     });
     return respuesta.data;
 }
+
+export const getApiLocal = async function(llamadaApiLocal){
+    let respuesta = await axios.get(`${llamadaApiLocal}`,{
+        headers: {
+            'Authorization': `Bearer ${store.state.userTokenLogin}`
+        }
+    });
+    return respuesta.data;
+}
